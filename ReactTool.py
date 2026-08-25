@@ -13,18 +13,18 @@ class AgentState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], add_messages]
 
 @tool
-def add_messages_tool(a: int, b: int) -> int:
+def math_add_tool(a: int, b: int) -> int:
 
     ''' This is additon tool to add 2 given numbers'''
     return a + b
 
 @tool
-def multiply_messages_tool(a: int, b: int) -> int:
+def math_multiply_tool(a: int, b: int) -> int:
 
     ''' This is multiply tool to multiply 2 given numbers'''
     return a * b
 
-tools= [add_messages_tool, multiply_messages_tool]
+tools= [math_add_tool, math_multiply_tool]
 
 llm = ChatAnthropic(model="claude-haiku-4-5", temperature=0.5).bind_tools(tools)
 
